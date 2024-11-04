@@ -4,11 +4,12 @@ import ollama
 prompt = """
 
 Create an OWL ontology in RDF/XML Syntax with instances of new individuals with objectProperty "hasRight" in the following Articles. Try to reuse already existing classes for instantiating individuals. If you really need a new class (only if really necessary), add them at the end of your response as described below.
-
+In the syntax, when writing object or data properties please use the format <Portuguese-Republic:{property}> or <Portuguese-Republic:{property} rdf:resource>, replacing {property} with the property you want to use.
 Start your response with "```xml" and end your response with "```classes = [class1, class2, ...]", replacing the [class1, class2, ...] with your new classes.
 Don't write other text apart from that.
 
-Current classes and properties:
+
+Current classes:
 classes = ['Right', 'Entity']
 
 Articles:
@@ -68,6 +69,17 @@ have a retroactive effect or reduce the extent or scope of the essential content
 
 Base ontology:
 ```xml
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution/"
+     xml:base="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:Portuguese-Constitution="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution"/>
+
 <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#hasRight">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Right"/>
@@ -112,7 +124,7 @@ for chunk in response:
     full_response += chunk['response']
 
 # write response to next ontologyN.owl
-current_ontology_index = len(os.listdir("outputs"))
+current_ontology_index = len(os.listdir("outputs")) - 3
 
 with open(f"outputs/ontology{current_ontology_index+1}.owl", "w") as f:
     f.write(full_response)

@@ -2,8 +2,12 @@ import os
 import ollama
 
 prompt = """
-Extend the ontology with following article. Please write just the new part of the ontology. Try to reuse already existing properties and classes as much as possible, so that it
-is not too complex. Start the prompt with "```xml" and ent your prompt with "```classes = [class1, class2, ...], objectProperties = [objectProperty1, objectProperty2, ...], dataProperties = [dataProperty1, dataProperty2, ...]", data, replacing the [class1, class2, ...], [objectProperty1, objectProperty2, ...], [dataProperty1, dataProperty2, ...] with your new classes, object properties and data properties.
+Extend the ontology with following article. Please write just the new part of the ontology. 
+Try to reuse already existing properties and classes as much as possible, so that it
+is not too complex. Start the prompt with "```xml" and ent your prompt with "```classes = [class1, class2, ...], 
+objectProperties = [objectProperty1, objectProperty2, ...], dataProperties = [dataProperty1, dataProperty2, ...]", 
+data, replacing the [class1, class2, ...], [objectProperty1, objectProperty2, ...], [dataProperty1, dataProperty2, ...] 
+with your new classes, object properties and data properties.
 
 Current classes and properties:
 classes = ['Duty', 'Right', 'Individual'], properties = ['hasRight', 'hasDuty', 'description']
@@ -17,7 +21,6 @@ Ontology:
 
 """
 
-# append ontology to the prompt from file
 with open("ontologies/pt_const.owl", "r") as f:
         prompt += f.read()
 
