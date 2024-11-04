@@ -1,0 +1,69 @@
+Here is the new part of the ontology:
+
+```xml
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#enjoysRights -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#enjoysRights">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Right"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToDuties -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToDuties">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Duty"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isEnjoysBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isEnjoysBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
+    </owl:ObjectProperty>
+```
+
+And here is the new part of the individuals:
+
+```xml
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Everyone -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Everyone">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
+        <Portuguese-Constitution:enjoysRights rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#RightToLife"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#TheRepublic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#TheRepublic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
+    </owl:NamedIndividual>
