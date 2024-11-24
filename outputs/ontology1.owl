@@ -1,69 +1,57 @@
-Here is the new part of the ontology:
+Here is the OWL ontology in RDF/XML syntax with instances of new individuals:
 
 ```xml
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#">
 
+  <!-- Define the ontology -->
+  <owl:Ontology rdf:ID="PortugueseConstitutionOntology">
+    <!-- Define classes -->
+    <owl:Class rdf:ID="FundamentalRight">
+      <!-- Define object property -->
+      <owl:ObjectProperty rdf:ID="promotes">
+        <rdfs:domain rdf:resource="#FundamentalRight"/>
+        <rdfs:range rdf:resource="#Condition"/>
+      </owl:ObjectProperty>
+    </owl:Class>
 
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#enjoysRights -->
+    <!-- Define instances of FundamentalRights -->
+    <owl:Individual rdf:ID="UniversalSuffrage">
+      <rdf:type rdf:resource="#FundamentalRight"/>
+      <promotes rdf:resource="#ConditionsForPromotingParticipationInGovernment"/>
+    </owl:Individual>
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#enjoysRights">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Right"/>
-    </owl:ObjectProperty>
+    <owl:Individual rdf:ID="ProtectionOfCulturalHeritage">
+      <rdf:type rdf:resource="#FundamentalRight"/>
+      <promotes rdf:resource="#ConditionsForPreservingNaturalResourcesAndEnsuringCorrectTownPlanning"/>
+    </owl:Individual>
 
+    <!-- Define classes -->
+    <owl:Class rdf:ID="Condition">
+      <!-- Define object property -->
+      <owl:ObjectProperty rdf:ID="guarantees">
+        <rdfs:domain rdf:resource="#Condition"/>
+        <rdfs:range rdf:resource="#FundamentalRight"/>
+      </owl:ObjectProperty>
+    </owl:Class>
 
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToDuties -->
+    <!-- Define instances of Conditions -->
+    <owl:Individual rdf:ID="ConditionsForPromotingParticipationInGovernment">
+      <rdf:type rdf:resource="#Condition"/>
+      <guarantees rdf:resource="#UniversalSuffrage"/>
+    </owl:Individual>
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToDuties">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Duty"/>
-    </owl:ObjectProperty>
-
-
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isEnjoysBy -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isEnjoysBy">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
-    </owl:ObjectProperty>
-
-
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToBy -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#isSubjectToBy">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
-    </owl:ObjectProperty>
+    <owl:Individual rdf:ID="ConditionsForPreservingNaturalResourcesAndEnsuringCorrectTownPlanning">
+      <rdf:type rdf:resource="#Condition"/>
+      <guarantees rdf:resource="#ProtectionOfCulturalHeritage"/>
+    </owl:Individual>
+  </owl:Ontology>
+</rdf:RDF>
 ```
 
-And here is the new part of the individuals:
+This ontology defines two classes: `FundamentalRight` and `Condition`. The `FundamentalRight` class has an object property `promotes` that relates to instances of the `Condition` class. The `Condition` class has an object property `guarantees` that relates to instances of the `FundamentalRight` class.
 
-```xml
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+The ontology also defines two instances of `FundamentalRight`: `UniversalSuffrage` and `ProtectionOfCulturalHeritage`. These individuals have `promotes` properties that relate them to specific conditions.
 
-
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Everyone -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Everyone">
-        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
-        <Portuguese-Constitution:enjoysRights rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#RightToLife"/>
-    </owl:NamedIndividual>
-
-
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#TheRepublic -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#TheRepublic">
-        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
-    </owl:NamedIndividual>
+Finally, the ontology defines two instances of `Condition`: `ConditionsForPromotingParticipationInGovernment` and `ConditionsForPreservingNaturalResourcesAndEnsuringCorrectTownPlanning`. These individuals have `guarantees` properties that relate them to specific fundamental rights.

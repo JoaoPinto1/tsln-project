@@ -1,64 +1,64 @@
+Here is an OWL ontology in RDF/XML syntax that represents the concepts and relationships described in Articles 27-32 of the Portuguese Constitution:
+
 ```xml
-<?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution/"
-     xml:base="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution/"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:Portuguese-Constitution="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#">
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:lang="en">
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // New part of the ontology (article extension)
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+  <!-- Define classes -->
+  <owl:Class rdf:ID="Detention">
+    <rdfs:label xml:lang="en">Detention</rdfs:label>
+    <owl:disjointWith rdf:resource="#Freedom"/>
+  </owl:Class>
 
+  <owl:Class rdf:ID="JudicialDecision">
+    <rdfs:label xml:lang="en">Judicial Decision</rdfs:label>
+  </owl:Class>
 
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Citizens -->
+  <!-- Define object properties -->
+  <owl:ObjectProperty rdf:ID="reasonForDetention">
+    <rdfs:label xml:lang="en">Reason for Detention</rdfs:label>
+    <owl:domain rdf:resource="#Detention"/>
+    <owl:range rdf:resource="xsd:string"/>
+  </owl:ObjectProperty>
 
-    <owl:Class rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Citizens">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Individual"/>
-    </owl:Class>
+  <owl:ObjectProperty rdf:ID="communicationToRelative">
+    <rdfs:label xml:lang="en">Communication to Relative</rdfs:label>
+    <owl:domain rdf:resource="#JudicialDecision"/>
+    <owl:range rdf:resource="#Person"/>
+  </owl:ObjectProperty>
 
-    
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#AllCitizens -->
+  <!-- Define instances -->
+  <owl:Individual rdf:ID="detentionByJudicialDecision">
+    <owl:type rdf:resource="#Detention"/>
+    <reasonForDetention>Disobeying a court decision or to ensure appearance before a competent judicial authority</reasonForDetention>
+  </owl:Individual>
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#AllCitizens">
-        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Citizens"/>
-    </owl:NamedIndividual>
+  <owl:Individual rdf:ID="detentionOfSuspects">
+    <owl:type rdf:resource="#Detention"/>
+    <reasonForDetention>Identification purposes, in the cases that are strictly necessary</reasonForDetention>
+  </owl:Individual>
 
-    
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#HaveRights -->
+  <!-- Define relationships -->
+  <owl:ObjectProperty rdf:ID="informsPerson">
+    <rdfs:label xml:lang="en">Informs Person</rdfs:label>
+    <owl:domain rdf:resource="#JudicialDecision"/>
+    <owl:range rdf:resource="#Person"/>
+  </owl:ObjectProperty>
 
-    <owl:Class rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#HaveRights">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Citizens"/>
-    </owl:Class>
+  <!-- Add instances of informsPerson -->
+  <owl:Statement rdf:ID="informsPerson1">
+    <rdf:subject rdf:resource="#detentionByJudicialDecision"/>
+    <rdf:predicate rdf:resource="informsPerson"/>
+    <rdf:object rdf:resource="#person1"/>
+  </owl:Statement>
 
-    
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#AllHaveRights -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#AllHaveRights">
-        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#HaveRights"/>
-    </owl:NamedIndividual>
-
-    
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#EqualRights -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#EqualRights">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#HaveRights"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#EqualRights"/>
-    </owl:ObjectProperty>
-
-    
-    <!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#EnjoyRights -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#EnjoyRights">
-        <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#HaveRights"/>
-    </owl:NamedIndividual>
+  <!-- Add more statements as needed -->
 
 </rdf:RDF>
 ```
+
+This ontology defines classes for `Detention` and `JudicialDecision`, as well as object properties for the relationships between these concepts. It also includes instances of these classes and object properties to illustrate how they can be used to represent the concepts described in Articles 27-32 of the Portuguese Constitution.
+
+Note that this is just one possible way to represent these concepts using OWL, and different ontologies may use different class structures and object properties to achieve the same goals.

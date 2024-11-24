@@ -5,7 +5,7 @@ prompt = """
 
 Create an OWL ontology in RDF/XML Syntax with instances of new individuals with objectProperty "hasRight" in the following Articles. Try to reuse already existing classes for instantiating individuals. If you really need a new class (only if really necessary), add them at the end of your response as described below.
 In the syntax, when writing object or data properties please use the format <Portuguese-Republic:{property}> or <Portuguese-Republic:{property} rdf:resource>, replacing {property} with the property you want to use.
-Start your response with "```xml" and end your response with "```classes = [class1, class2, ...]", replacing the [class1, class2, ...] with your new classes.
+Start your response with "```xml" and end your response with "```classes = [class1, class2, ...]", replacing the [class1, class2, ...] with your new classes, exactly in that format.
 Don't write other text apart from that.
 
 

@@ -1,31 +1,88 @@
-```xml
-classes = [LegalPerson, Entity], objectProperties = [hasCompatibleDuty, hasRight], dataProperties = [description]
+Here is an OWL ontology in RDF/XML syntax that represents the concepts and relationships mentioned in Articles 37-44 of the Portuguese Constitution:
 
-<!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#LegalPerson -->
-
-<owl:Class rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#LegalPerson">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
-</owl:Class>
-
-<!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity -->
-
-<owl:Class rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
-
-<!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#hasCompatibleDuty -->
-
-<owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#hasCompatibleDuty">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#LegalPerson"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Duty"/>
-</owl:ObjectProperty>
-
-<!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#hasRight -->
-
-<owl:ObjectProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#hasRight">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Right"/>
-</owl:ObjectProperty>
-
-<!-- http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#description -->
-
-<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#description"/>
 ```
+<?xml version="1.0" encoding="UTF-8"?>
+<owl:Ontology xmlns:owl="http://www.w3.org/2002/07/owl#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <!-- Classes -->
+  <owl:Class rdf:ID="Media">
+    <rdfs:label>Media</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PublicRadioAndTelevisionService">
+    <rdfs:label>Public Radio and Television Service</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PoliticalParty">
+    <rdfs:label>Political Party</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="TradeUnionAndProfessionalOrganisation">
+    <rdfs:label>Trade Union and Professional Organisation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ReligiousCommunity">
+    <rdfs:label>Religious Community</rdfs:label>
+  </owl:Class>
+
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:ID="supports">
+    <rdfs:label>Supports</rdfs:label>
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdfs:range rdf:resource="#NewIndividual"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="concentrates">
+    <rdfs:label>Concentrates</rdfs:label>
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdfs:range rdf:resource="#NewIndividual"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="operates">
+    <rdfs:label>Operates</rdfs:label>
+    <rdfs:domain rdf:resource="#PublicRadioAndTelevisionService"/>
+    <rdfs:range rdf:resource="#Media"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="expresses">
+    <rdfs:label>Expresses</rdfs:label>
+    <rdfs:domain rdf:resource="#PoliticalParty"/>
+    <rdfs:range rdf:resource="#NewIndividual"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="confronts">
+    <rdfs:label>Confronts</rdfs:label>
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdfs:range rdf:resource="#NewIndividual"/>
+  </owl:ObjectProperty>
+
+  <!-- Individuals -->
+  <owl:NamedIndividual rdf:ID="new-individual-1">
+    <rdfs:label>New Individual 1</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="new-individual-2">
+    <rdfs:label>New Individual 2</rdfs:label>
+  </owl:NamedIndividual>
+
+  <!-- Statements -->
+  <owl:Statement rdf:ID="supports-statement">
+    <rdf:type rdf:resource="#supports"/>
+    <rdf:subject rdf:resource="#new-individual-1"/>
+    <rdf:predicate rdf:resource="#Media"/>
+  </owl:Statement>
+  <owl:Statement rdf:ID="concentrates-statement">
+    <rdf:type rdf:resource="#concentrates"/>
+    <rdf:subject rdf:resource="#new-individual-2"/>
+    <rdf:predicate rdf:resource="#Media"/>
+  </owl:Statement>
+  <owl:Statement rdf:ID="operates-statement">
+    <rdf:type rdf:resource="#operates"/>
+    <rdf:subject rdf:resource="#PublicRadioAndTelevisionService"/>
+    <rdf:predicate rdf:resource="#new-individual-1"/>
+  </owl:Statement>
+  <owl:Statement rdf:ID="expresses-statement">
+    <rdf:type rdf:resource="#expresses"/>
+    <rdf:subject rdf:resource="#PoliticalParty"/>
+    <rdf:predicate rdf:resource="#new-individual-2"/>
+  </owl:Statement>
+
+</owl:Ontology>
+```
+
+This ontology defines classes for `Media`, `PublicRadioAndTelevisionService`, `PoliticalParty`, and `ReligiousCommunity`. It also defines object properties for `supports`, `concentrates`, `operates`, `expresses`, and `confronts`. Finally, it creates instances of new individuals with these object properties.
+
+Please note that this is a simplified representation of the concepts and relationships mentioned in Articles 37-44 of the Portuguese Constitution. A more comprehensive ontology would require additional detail and nuance to accurately capture the complexities of the constitutional text.
