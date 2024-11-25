@@ -92,21 +92,23 @@ new_individuals = """
 pattern = r'(<owl:NamedIndividual[^>]*>.*?</owl:NamedIndividual>)'
 
 # Use re.findall() to extract all matches of <owl:NamedIndividual> elements
-individuals = re.findall(pattern, new_individuals, flags=re.DOTALL)
+named_individuals = re.findall(pattern, new_individuals, flags=re.DOTALL)
 
-# Print the result
-for individual in individuals:
-    print(individual)
-    print('---')
-
-# read pt_const.owl and add new individuals
-
-tree_new = ET.fromstring(prefix + new_individuals + suffix)
 
 individuals = {
 }
 
-for individual in tree_new.findall('.//owl:NamedIndividual', namespace):
+# Print the result
+for ni in named_individuals:
+    print(ni)
+    print('---')
+
+    # read pt_const.owl and add new individuals
+
+    tree_new = ET.fromstring(prefix + ni + suffix)
+
+
+    individual = tree_new.find('.//owl:NamedIndividual', namespace)
     name = individual.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about').split('#')[-1]
     # print(name)
 
