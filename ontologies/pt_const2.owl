@@ -61,6 +61,7 @@ is not possible to resort to the public authorities, to use force to repel any a
 <owl:NamedIndividual rdf:about="#Citizen">
   <rdf:type rdf:resource="#Entity"/>
   <hasRight rdf:resource="#rightToFreeSpeech"/>
+  <owl:sameAs rdf:resource="#Everyone"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#rightToDefense">
