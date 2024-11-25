@@ -114,6 +114,18 @@ for i in range(FIRST_PAGE, LAST_PAGE, NUMBER_OF_PAGES_PER_CHUNK):
     for chunk in response:
         print(chunk['response'], end='')
         full_response += chunk['response']
+
+    # # <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#resistInfringementOrder">
+    # #     <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Right"/>
+    # #     <Portuguese-Constitution:description>Resist any order that infringes their rights, freedoms or guarantees and, when it 
+    # # is not possible to resort to the public authorities, to use force to repel any aggression</Portuguese-Constitution:description>
+    # # </owl:NamedIndividual>
+    
+    # # get all named individuals and properties from the response
+    # individuals = re.findall("<owl:NamedIndividual.*</owl:NamedIndividual>", full_response)
+    # print(individuals)
+    # assert False
+
     
     # write response to next ontologyN.owl
     current_ontology_index = len(os.listdir("outputs"))
