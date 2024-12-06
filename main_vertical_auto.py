@@ -9,19 +9,20 @@ import owlready2
 
 from object_property_configs import *
 
-FIRST_PAGE = 15
-LAST_PAGE = 20
+FIRST_PAGE = 9
+LAST_PAGE = 107
 NUMBER_OF_PAGES_PER_CHUNK = 1
 MAX_RETRIES = 3
 
-OBJECT_PROPERTY = "hasRight"
+OBJECT_PROPERTY = "isPartOf"
 
 BASE_PROMPT = f"""
 
 
 Create an OWL ontology in RDF/XML Syntax with instances of new individuals with objectProperty {OBJECT_PROPERTY} from the Articles above.
 
-Try to reuse already existing named individuals as much as possible so that expressions with similar meaning are represented by the same individual (for example, "Everyone" and "Every citizen" can be both represented by the same named individual "Everyone", no need to create a new one).
+Try to reuse already existing named individuals as much as possible so that expressions with similar meaning are represented by the same individual (for example, the phrases "Everyone" and "Every citizen" can be both represented by the same named individual "Everyone", no need to create a named individual "Every citizen").
+If there are any new individuals in the Articles provided, please don't make up any, just say there are no new individuals.
 Current individuals:
 
 """
@@ -40,18 +41,18 @@ Base ontology (don't write this part in your response):
         xmlns:Portuguese-Constitution="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#">
         <owl:Ontology rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution"/>
 
-    {OBJECT_PROPERTY_DEFINITIONS[OBJECT_PROPERTY]}
+    {OBJECT_PROPERTY_DEFINITIONS_WITHOUT_NAMESPACE[OBJECT_PROPERTY]}
 ```
-Write the new individuals of the classes "Entity" and "Right" that you found that have the objectProperty "hasRight", only if you found any, as in the following example with the named individuals "Everyone" and "resistInfringementOrder":
+Write the new individuals of the classes "{TYPE_ORDER[OBJECT_PROPERTY][0]}" and "{TYPE_ORDER[OBJECT_PROPERTY][1]}" that you found that have the objectProperty {OBJECT_PROPERTY}, only if you found any, as in the following example with the named individuals "{NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY][0]}" and "{NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY][1]}":
 ```xml
 <!-- Instantiation -->
 
-{EXAMPLE_NAMED_INDIVIDUALS[OBJECT_PROPERTY]}
+{EXAMPLE_NAMED_INDIVIDUALS_WITHOUT_NAMESPACE[OBJECT_PROPERTY]}
 ```
 
-After that, write only the name of the new named individuals you found exactly in this format, as in this case "Everyone" and "resistInfringementOrder":
+After that, write only the name of the new named individuals you found exactly in this format, as in this case "{NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY][0]}" and "{NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY][1]}":
 
-individuals = ["Everyone", "resistInfringementOrder"]
+individuals = ["{NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY][0]}", "{NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY][1]}"]
 """
 
 RDFXML_PREFIX = """
@@ -80,12 +81,12 @@ NAMESPACE = {
     'Portuguese-Constitution': 'http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#'
 }
 
-onto = owlready2.get_ontology("ontologies/pt_const.owl").load()
+onto = owlready2.get_ontology("ontologies/pt_const_supports.owl").load()
 onto.namespace = "http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#"
 
 
 reader = PdfReader("Constitution7th.pdf")
-current_individuals = ["Everyone", "resistInfringementOrder"]
+current_individuals = NAMED_INDIVIDUALS_NAMES[OBJECT_PROPERTY]
 
 # for i in range(FIRST_PAGE, LAST_PAGE, NUMBER_OF_PAGES_PER_CHUNK):
 
@@ -143,6 +144,9 @@ individuals = {current_individuals}
     # </owl:NamedIndividual>
 
     # write response to next ontologyN.owl
+    if not os.path.exists("outputs"):
+        os.makedirs("outputs")
+
     current_ontology_index = len(os.listdir("outputs"))
     
     with open(f"outputs/ontology{current_ontology_index+1}.owl", "w") as f:
@@ -182,7 +186,14 @@ individuals = {current_individuals}
                     prop_value = list(prop.attrib.items())[0][1].split('#')[1]
                 else:
                     prop_value = prop.text
-                individuals[name][prop_tag] = prop_value
+                    
+                if prop_tag != OBJECT_PROPERTY:
+                    individuals[name][prop_tag] = prop_value
+                else:
+                    if individuals[name].get(prop_tag) is None:
+                        individuals[name][prop_tag] = [prop_value]
+                    else:
+                        individuals[name][prop_tag].append(prop_value)
                 # print(individuals[name])
         
 
@@ -202,8 +213,8 @@ individuals = {current_individuals}
             for p in props:
                 if p == 'type':
                     continue
-                if p == 'hasRight':
-                    setattr(newIndividual, p, [onto[props[p]]])
+                if p == OBJECT_PROPERTY:
+                    setattr(newIndividual, p, [onto[p_i] for p_i in props[p]])
                     continue
                 setattr(newIndividual, p, [props[p]])
     except Exception as e: 
@@ -227,6 +238,7 @@ individuals = {current_individuals}
 
         current_individuals.extend(ast.literal_eval(new_individuals.group(1)))
 
+        # remove duplicates
         current_individuals = list(set(current_individuals))
 
         print(current_individuals)

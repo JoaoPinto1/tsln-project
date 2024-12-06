@@ -65,6 +65,8 @@ new_individuals = """
 <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Citizen">
     <rdf:type rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#Entity"/>
     <Portuguese-Constitution:hasRight rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#rightToFreeSpeech"/>
+    <Portuguese-Constitution:hasRight rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#rightToDefense"/>
+    <Portuguese-Constitution:hasRight rdf:resource="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#rightToAssemble"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#rightToFreeSpeech">
@@ -119,46 +121,61 @@ for ni in named_individuals:
             prop_value = list(prop.attrib.items())[0][1].split('#')[1]
         else:
             prop_value = prop.text
-        individuals[name][prop_tag] = prop_value
-    # print(individuals[name])
+
+        if prop_tag != 'hasRight':
+            individuals[name][prop_tag] = prop_value
+        else:
+            if individuals[name].get(prop_tag) is None:
+                individuals[name][prop_tag] = [prop_value]
+            else:
+                individuals[name][prop_tag].append(prop_value)
+            
+    print("INDIVIDUALS;", individuals[name])
 
 print(individuals, len(individuals))
 
+def sort_key(x):
+    BIG_NUMBER = 1000000
+    if x[1]['type'] not in ['Right', 'Entity']:
+        return BIG_NUMBER
+    return ['Right', 'Entity'].index(x[1]['type'])
 
+individuals = sorted(individuals.items(), key=sort_key)
+
+print(individuals)
 
 onto = owlready2.get_ontology("ontologies/pt_const.owl").load()
 onto.namespace = "http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#"
-print(dir(onto['Entity']))
+# print(dir(onto['Entity']))
 
 # print(dir(onto))
 
-print(onto.Everyone.hasRight)
-print(onto.resistInfringementOrder.description)
+# print(onto.Everyone.hasRight)
+# print(onto.resistInfringementOrder.description)
 
 
-RightToFreeSpeech = onto.Right("rightToFreeSpeech")
-RightToFreeSpeech.description = ["Exercising the right to free speech"]
-Citizen = onto.Entity("Citizen")
-Citizen.hasRight = [onto.rightToFreeSpeech]
+# RightToFreeSpeech = onto.Right("rightToFreeSpeech")
+# RightToFreeSpeech.description = ["Exercising the right to free speech"]
+# Citizen = onto.Entity("Citizen")
+# Citizen.hasRight = [onto.rightToFreeSpeech]
 
-print(onto.Citizen.hasRight)
-print(onto.rightToFreeSpeech.description)
+# print(onto.Citizen.hasRight)
+# print(onto.rightToFreeSpeech.description)
 
 
-for individual, props in individuals.items():
+for individual, props in individuals:
     print(individual)
     NewIndividual = onto[props['type']](name=individual)
     for p in props:
         if p == 'type':
             continue
         if p == 'hasRight':
-            setattr(NewIndividual, p, [onto[props[p]]])
+            print(p, props[p], [onto[p_i] for p_i in props[p]])
+            setattr(NewIndividual, p, [onto[p_i] for p_i in props[p]])
             continue
         setattr(NewIndividual, p, [props[p]])
 
 
 print([c for c in onto.classes()])
 
-onto.save("ontologies/pt_const2.owl", format="rdfxml")
-
-
+onto.save("ontologies/pt_const_test.owl", format="rdfxml")
