@@ -1,0 +1,803 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution"
+         xmlns="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution"/>
+
+<owl:ObjectProperty rdf:about="#hasDuty">
+  <rdfs:domain rdf:resource="#Entity"/>
+  <rdfs:range rdf:resource="#Duty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRight">
+  <rdfs:domain rdf:resource="#Entity"/>
+  <rdfs:range rdf:resource="#Right"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#supports">
+  <rdfs:domain rdf:resource="#Entity"/>
+  <rdfs:range rdf:resource="#Entity"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#description">
+  <rdfs:domain rdf:resource="#Duty"/>
+  <rdfs:domain rdf:resource="#Entity"/>
+  <rdfs:domain rdf:resource="#Right"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Entity">
+  <rdfs:subClassOf rdf:resource="#Portuguese_Republic"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Duty">
+  <rdfs:subClassOf rdf:resource="#Portuguese_Republic"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Right">
+  <rdfs:subClassOf rdf:resource="#Portuguese_Republic"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Portuguese_Republic">
+  <rdfs:subClassOf rdf:resource="#Republic"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Republic"/>
+
+<owl:NamedIndividual rdf:about="#Cooperatives">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#PrivateEconomicEnterprise"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Creation and activities of cooperatives</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EducateChildren">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Educate and maintain their children</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Everyone">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasRight rdf:resource="#resistInfringementOrder"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#resistInfringementOrder">
+  <rdf:type rdf:resource="#Right"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resist any order that infringes their rights, freedoms or guarantees and, when it 
+is not possible to resort to the public authorities, to use force to repel any aggression</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Parents">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#EducateChildren"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#State">
+  <rdf:type rdf:resource="#Entity"/>
+  <supports rdf:resource="#Cooperatives"/>
+  <supports rdf:resource="#WorkerExperiments"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Portuguese state</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WorkerExperiments">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Viable worker-management experiments</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GuaranteeIndependence">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Guarantee national independence and create the political, economic, social and cultural conditions that promote it</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DefendDemocracy">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Defend political democracy and safeguard and encourage citizens’ democratic participation in the resolution of national problems</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PromoteCulturalHeritage">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Protect and enhance the Portuguese people’s cultural heritage, defend nature and the environment, preserve natural resources and ensure correct town and country planning</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Portuguese">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Portugal">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#DefendDemocracy"/>
+  <hasDuty rdf:resource="#GuaranteeIndependence"/>
+  <hasDuty rdf:resource="#PromoteCulturalHeritage"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PromoteEquality">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Promote equality between men and women</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ContributeToPeopleOrganization">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Contribute to the organisation and expression of the will of the people</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Citizens">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#AccessToPublicService"/>
+  <hasDuty rdf:resource="#ChooseAProfession"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AzoresAndMadeiraArchipelagos">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Equality">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ensure equality between men and women</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PromoteHarmoniousDevelopment">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Promote the harmonious development of the whole of Portuguese territory</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalSuffrage">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Exercise political power by means of universal, equal, direct, secret and periodic suffrage</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RespectNationalIndependence">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Contribute to the organisation and expression of the will of the people with respect for the principles of national independence, the unity of the state and political democracy</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Citizen">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#UniversalSuffrage"/>
+  <hasDuty rdf:resource="#Equality"/>
+  <hasDuty rdf:resource="#RespectNationalIndependence"/>
+  <hasDuty rdf:resource="#PromoteHarmoniousDevelopment"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PortugueseCitizens">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ForeignersAnd StatelessPersons">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EuropeanUnionMemberStatesCitizens">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PortugueseSpeakingStatesCitizens">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PublicAndPrivateEntities">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Public and private entities</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConstitutionalOrgans">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EntitiesThatExerciseSovereignty">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConstitutionalPrecepts">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ensure constitutional precepts are directly applicable and binding</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConstitutionalPreceptsWithRegardToRightsFreedomsAndGuarantees">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Respect constitutional precepts regarding rights, freedoms and guarantees</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SafeguardConstitutionallyProtectedRightsAndInterests">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Safeguard other constitutionally protected rights and interests</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PublicEntities">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#ConstitutionalPreceptsWithRegardToRightsFreedomsAndGuarantees"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PrivateEntities">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#SafeguardConstitutionallyProtectedRightsAndInterests"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LegalAdvice">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Receive legal information, advice and counsel</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SwiftJustice">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ensure swift and prioritized judicial proceedings</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RightOfResistance">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resist and defend against orders that infringe rights</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RightToLife">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Respect and protect human life</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RightToPersonalIntegrity">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Respect and protect personal integrity, dignity, and privacy</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanLifeIsInviolable">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#RightToLife"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EveryPerson">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#RightToPersonalIntegrity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CitizensWhoAreUnjustlyConvicted">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Victims">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChooseCounsel">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Have the right to choose counsel</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AccusedPersons">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#ChooseCounsel"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Article34_1">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Protect the secrecy of correspondence and other means of private communication</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Spouses">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChildrenBornOutsideWedlock">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Parents2">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MediaEntities">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RadioAndTelevisionBroadcastingStations">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PoliticalParties">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TradeUnionAndProfessionalOrganisations">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrganisationsThatRepresentEconomicActivities">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SocialOrganisations">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RightToTravelAndSettleFreely">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Guaranteed right to travel and settle freely in any part of Portuguese territory</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConscientiousObjectors">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CitizensWhoExerciseTheirRightToTravelAndSettleFreely">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#RightToTravelAndSettleFreely"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChooseAProfession">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Choose a profession or type of work freely</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AccessToPublicService">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Have access to the public service under equal and free conditions</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#All citizens">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#AccessToPublicService"/>
+  <hasDuty rdf:resource="#ChooseAProfession"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Vote">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Exercise the right to vote</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EveryCitizen">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#Vote"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SelfGovernmentOrgansOfAutonomousRegions">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Authorities">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#Everyone"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RightToWork">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The right to work, including full-employment policies, equal opportunities in the choice of profession or type of work, and the conditions needed to avoid gender-based preclusion or limitation of access to any position, work or professional category.</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EveryWorker">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To work in conditions that are hygienic, safe and healthy; to rest and leisure time, a maximum limit on the working day, a weekly rest period and periodic paid holidays.</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Consumers">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To the good quality of the goods and services consumed, to training and information, to the protection of health, safety and their economic interests.</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Workers">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#EveryWorker"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PrivateEconomicEnterprise">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Form private economic enterprises</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WorkerManagement">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Recognize and support worker management</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PopularInitiatives">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Promote and support local popular initiatives that work towards the resolution of housing problems</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HousingAndSelfBuildingCooperatives">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Foster the formation of housing and self-building cooperatives</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LocalCommunity">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Local community</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RentalSystem">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#PopularInitiatives"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UrbanLand">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#HousingAndSelfBuildingCooperatives"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Fatherhood">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Protect and support families</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Motherhood">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Protect and support families</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Women">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#Motherhood"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FathersAndMothers">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#Fatherhood"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Youth">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Families">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrganisationsThatSupportYouth">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Support and foster youth organisations</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InternationalYouthExchanges">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Foster international youth exchanges</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrganisationsThatSupportTheElderly">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Support and foster organisations that support the elderly</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrganisationsThatSupportPeopleWithDisabilities">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Support and foster organisations that support people with disabilities</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Schools">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Enterprises">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ResidentsOrganisations">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CulturalAssociations">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Foundations">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RecreationalGroups">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Elderly">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DisabledCitizens">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Teachers">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Students">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CulturalAgents">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AssociationsOfTeachersStudentsAndParents">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#Parents"/>
+  <hasDuty rdf:resource="#Teachers"/>
+  <hasDuty rdf:resource="#Students"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AssociationsOfTeachersStudentsAndParentsCommunitiesAndInstitutionsOfAScientificNature">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#AssociationsOfTeachersStudentsAndParents"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllCulturalAgents">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#CulturalAgents"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PhysicalEducationAndSport">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Everyone has the right to physical education and sport</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PromotePhysicalEducationAndSport">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Promote, stimulate, guide and support the practice and dissemination of physical education and sport</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SportingAssociationsAndGroups">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#PromotePhysicalEducationAndSport"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WorkerManagementExperiments">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Viable worker-management experiments</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SmallMediumEnterprises">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#WorkerManagementExperiments"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ForeignEconomicActivity">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Economic activity and investment by foreign natural and legal persons</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbandonedMeansOfProduction">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Abandoned means of production</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WorkerParticipationInManagement">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Worker participation in management</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PrivateSectorEntities">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#ForeignEconomicActivity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbandonedMeansOfProductionOwners">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#AbandonedMeansOfProduction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnitsOfPublicSectorProduction">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#WorkerParticipationInManagement"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ResizeExcessivelyLargeFarms">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eliminate large estates and promote smaller farms</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StateAssistanceForResizedFarms">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Provide assistance to workers in resized farms</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SmallFarmers">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#ResizeExcessivelyLargeFarms"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AgriculturalWorkers">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#StateAssistanceForResizedFarms"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BankOfPortugal">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AutonomousFundsAndDepartments">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MenAndWomen">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Direct and active participation in political life</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RegionalReferenda">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Participate in referenda that address matters which specifically also concern them</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CitizensAbroad">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#RegionalReferenda"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Citizens who reside abroad</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EuropeanParliament">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InternationalConventions">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">International conventions and the respective ratification notices</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RegulatoryDecrees">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Regulatory decrees</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Election">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Exercise the right to vote in person</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PortugueseOriginCitizens">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RegisteredElectors">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CitizensOfPortugueseOriginWhoAreRegisteredToVoteAndHaveAttainedTheAgeOfThirtyFive">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Portuguese Territory">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OutgoingPresident">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ElectionResultsPublished">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremeCourtOfJustice">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AssembleiaDaRepublica">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SetTheElectoralLaw">
+  <rdf:type rdf:resource="#Duty"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StateOfSiege">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Declare a state of siege</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EnactRegulation">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Enact regulation of electoral acts</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PresidentOfTheAssembleiaDaRepublica">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PrimeMinister">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PresidentOfTheConstitutionalCourt">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ombudsman">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FormerPresidentsOfTheRepublic">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CitizensAppointedByThePresident">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CitizensElectedByTheAssembleiaDaRepublica">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PronounceOnDissolutions">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pronounce on dissolutions of the Assembleia da República and the Legislative Assemblies of the autonomous regions</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HasThePowerToMakeRegulatoryDecrees">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Has the power to make regulatory decrees</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CouncilOfState">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#PronounceOnDissolutions"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Every Citizen">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Every citizen</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Minister">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#PrimeMinister"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OutgoingGovernment">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NewPrimeMinister">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#People">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Courts">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jurisdiction">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Exercise sovereignty and administer justice</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DefendCitizensRights">
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ensure the defence of citizens’ rights and interests that are protected by law</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LocalAuthorities">
+  <rdf:type rdf:resource="#Entity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ParishAssembly">
+  <rdf:type rdf:resource="#Entity"/>
+  <rdf:type rdf:resource="#Duty"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The parish's decision-making organ</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ParishCouncil">
+  <rdf:type rdf:resource="#Entity"/>
+  <hasDuty rdf:resource="#ParishAssembly"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GovernmentRepresentatives">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Representatives appointed by the Council of Ministers</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SmallAndMediumSizedEnterprises">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Small and medium-sized enterprises that have been indirectly nationalised</description>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IndependentEntities">
+  <rdf:type rdf:resource="#Entity"/>
+  <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">More than one independent entity</description>
+</owl:NamedIndividual>
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+  <rdfs:domain rdf:resource="#Entity"/>
+</rdf:Description>
+
+
+</rdf:RDF>

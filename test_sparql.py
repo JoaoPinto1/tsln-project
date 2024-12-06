@@ -273,12 +273,12 @@ def get_all_supports(file_path=None):
       print(f"Entity: {entity}, Description: {description}, Entity2: {entity2}, Description2: {description2}")
 
 
-# get_all_rights("ontologies/outputs_ontologies/pt_const_rights.owl")
+# get_all_rights("ontologies/output_ontologies/pt_const_rights.owl")
 
-# get_all_entity_rights("ontologies/outputs_ontologies/pt_const_rights.owl", "everyone")
+# get_all_entity_rights("ontologies/output_ontologies/pt_const_rights.owl", "everyone")
 
-# get_all_entity_duties("ontologies/outputs_ontologies/pt_const_duties.owl", "Citizen")
+# get_all_entity_duties("ontologies/output_ontologies/pt_const_duties.owl", "Citizen")
 
-get_all_entity_supports("ontologies/outputs_ontologies/pt_const_supports.owl", "Portuguese_state")
+get_all_entity_supports("ontologies/output_ontologies/pt_const_supports.owl", "State")
 
-# get_all_supports("ontologies/outputs_ontologies/pt_const_supports.owl")
+# get_all_supports("ontologies/output_ontologies/pt_const_supports.owl")

@@ -81,7 +81,7 @@ NAMESPACE = {
     'Portuguese-Constitution': 'http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#'
 }
 
-onto = owlready2.get_ontology("ontologies/pt_const_supports.owl").load()
+onto = owlready2.get_ontology("ontologies/pt_const_ispartof.owl").load()
 onto.namespace = "http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#"
 
 
@@ -247,7 +247,7 @@ individuals = {current_individuals}
         continue
 
 # write response to next ontologyN.owl
-current_ontology_outputs_index = len(os.listdir("ontologies/outputs_ontologies"))
+current_ontology_outputs_index = len(os.listdir("ontologies/output_ontologies"))
 
-onto.save(f"ontologies/outputs_ontologies/pt_const{current_ontology_outputs_index + 1}.owl", format="rdfxml")
+onto.save(f"ontologies/output_ontologies/pt_const{current_ontology_outputs_index + 1}.owl", format="rdfxml")
 

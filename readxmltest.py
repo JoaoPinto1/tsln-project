@@ -144,7 +144,7 @@ individuals = sorted(individuals.items(), key=sort_key)
 
 print(individuals)
 
-onto = owlready2.get_ontology("ontologies/pt_const.owl").load()
+onto = owlready2.get_ontology("ontologies/pt_const_ispartof.owl").load()
 onto.namespace = "http://www.semanticweb.org/jbsantos/ontologies/2024/10/Portuguese-Constitution#"
 # print(dir(onto['Entity']))
 
